@@ -2,7 +2,6 @@ import React, { useContext, memo } from "react";
 import useToggleState from "./hooks/useToggleState";
 import EditTodoForm from "./EditTodoForm";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItem";
 import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -25,11 +24,9 @@ function Todo({ id, task, completed }) {
             checked={completed}
             onClick={() => dispatch({type: 'TOGGLE', id: id})}
           />
-          <ListItemText
-            style={{ textDecoration: completed ? "line-through" : "none" }}
-          >
-            {task}
-          </ListItemText>
+            <div style={{ textDecoration: completed ? "line-through" : "none" }} >
+              {task}
+            </div>
           <ListItemSecondaryAction>
             <IconButton aria-label='Delete' onClick={() => dispatch({type: 'REMOVE', id: id})}>
               <DeleteIcon />
